@@ -1,0 +1,446 @@
+.loading {
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.4);
+
+}
+
+.web-cam_model_div{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+
+}
+.loading-content {
+  position: absolute;
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  top: 40%;
+  left:50%;
+  animation: spin 2s linear infinite;
+  }
+    
+  @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+  }
+
+.disable-link {
+  pointer-events: none;
+}
+label.col-lg-6, label.col-lg-3 {
+  font-weight: bold;
+}
+.login-left {
+    align-items: center;
+    background: #fff;
+    border-radius: 6px 0 0 6px;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px;
+    width: 235px;
+    display: flex;
+}
+
+
+
+
+tbody, td, tfoot, th, thead, tr {
+  border: 1px solid;
+  border-color: inherit;
+      padding: 10px;
+}
+thead, th {
+font-weight: bold;
+}
+
+.loan-detail{
+    padding-top: 30px;
+}
+.col-6{
+    padding-top: 10px;
+}
+label.col-lg-6,label.col-lg-3{
+font-weight: bold;
+}
+a.disabled {
+pointer-events: none;
+cursor: default;
+}
+.control-label{
+    font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 0;
+  padding-top: 9px;
+}
+.list-group-item.active {
+  z-index: 0;
+  color: #fff;
+  background-color: #28a745;
+  border-color: #28a745;
+}
+.sub_tabs.active {
+  z-index: 0;
+  color: #fff;
+  background-color: #3e007c;
+  border-color: #3e007c;
+}
+.footer-btn{
+    padding: 18px;
+}
+.from-mrg{
+max-width: 500px;
+  margin: 0 auto;
+}
+.logo-margin{
+    padding: 0px 100px;
+}
+.form-control{
+  border-color: #e3e3e3;
+  box-shadow: none;
+  font-size: 15px;
+  height: 44px;
+  color: #333;
+  /* border-top: 0px;
+  border-left: 0px;
+  border-right: 0px; */
+}
+.form-control[readonly]{
+    background-color: #ffff;
+  opacity: 1;
+}
+.text-red-600,.error,.validation-error-label{
+color: red;
+}
+.switchery {
+background-color: #fff;
+border: 1px solid #ddd;
+border-radius: 100px;
+cursor: pointer;
+display: inline-block;
+width: 44px;
+height: 22px;
+vertical-align: middle;
+position: relative;
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+}
+.checkbox-switchery .switchery {
+position: absolute;
+left: 0;
+margin-top: -2px;
+}
+.switchery > small {
+background-color: #fff;
+border-radius: 100px;
+width: 22px;
+height: 22px;
+position: absolute;
+top: 0;
+-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+.checkbox.checkbox-switchery {
+margin-bottom: 14px;
+padding-left: 0;
+}
+.checkbox.checkbox-switchery.disabled .switchery {
+cursor: not-allowed;
+}
+.checkbox[class*=switchery-],
+.checkbox-inline[class*=switchery-] {
+padding-left: 0;
+padding-right: 0;
+}
+.switchery-lg.checkbox-switchery {
+margin-bottom: 18px;
+}
+.switchery-lg.checkbox-switchery .switchery {
+margin-top: -4px;
+}
+label.switchery-lg {
+margin-bottom: 0;
+}
+.switchery-lg .switchery {
+height: 26px;
+width: 52px;
+}
+.switchery-lg .switchery > small {
+height: 26px;
+width: 26px;
+}
+.switchery-sm.checkbox-switchery {
+margin-bottom: 10px;
+}
+.switchery-sm.checkbox-switchery .switchery {
+margin-top: 0px;
+}
+label.switchery-sm {
+margin-bottom: 0;
+}
+.switchery-sm .switchery {
+height: 18px;
+width: 36px;
+}
+.switchery-sm .switchery > small {
+height: 18px;
+width: 18px;
+}
+.switchery-xs.checkbox-switchery {
+margin-bottom: 6px;
+}
+.switchery-xs.checkbox-switchery .switchery {
+margin-top: 2px;
+}
+label.switchery-xs {
+margin-bottom: 0;
+}
+.switchery-xs .switchery {
+height: 14px;
+width: 28px;
+}
+.switchery-xs .switchery > small {
+height: 14px;
+width: 14px;
+}
+.checkbox-switchery label,
+label.checkbox-switchery {
+position: relative;
+padding-left: 56px;
+margin: 0;
+cursor: pointer;
+}
+.checkbox-switchery.switchery-lg label,
+label.checkbox-switchery.switchery-lg {
+padding-left: 64px;
+}
+.checkbox-switchery.switchery-sm label,
+label.checkbox-switchery.switchery-sm {
+padding-left: 48px;
+}
+.checkbox-switchery.switchery-xs label,
+label.checkbox-switchery.switchery-xs {
+padding-left: 40px;
+}
+.checkbox-switchery.checkbox-inline {
+margin-bottom: 0;
+}
+.checkbox-switchery.checkbox-right .switchery {
+left: auto;
+right: 0;
+}
+.checkbox-switchery.checkbox-right label,
+label.checkbox-switchery.checkbox-right {
+padding-left: 0;
+padding-right: 56px;
+}
+.checkbox-switchery.checkbox-right.switchery-lg label,
+label.checkbox-switchery.checkbox-right.switchery-lg {
+padding-left: 0;
+padding-right: 64px;
+}
+.checkbox-switchery.checkbox-right.switchery-sm label,
+label.checkbox-switchery.checkbox-right.switchery-sm {
+padding-left: 0;
+padding-right: 48px;
+}
+.checkbox-switchery.checkbox-right.switchery-xs label,
+label.checkbox-switchery.checkbox-right.switchery-xs {
+padding-left: 0;
+padding-right: 40px;
+}
+.switchery-double .switchery {
+position: relative;
+margin-left: 7px;
+margin-right: 7px;
+margin-top: -7px;
+margin-bottom: -5px;
+}
+.switchery-double.checkbox-switchery label,
+label.switchery-double.checkbox-switchery {
+padding: 0;
+}
+.switchery-double.switchery-lg .switchery {
+margin-top: -8px;
+margin-bottom: -6px;
+}
+.switchery-double.switchery-sm .switchery {
+margin-top: -6px;
+margin-bottom: -4px;
+}
+.switchery-double.switchery-xs .switchery {
+margin-top: -5px;
+margin-bottom: -3px;
+}
+.edit, .delete, .shop, .settings {
+      padding: 4px 7px;
+  border: 1px solid;
+  border-radius: 10px;
+  margin: 0px 5px;
+  color: #28a745;
+}
+select.error,input.error,textarea.error {
+  border: 2px solid #CC0000
+}
+.checkbox-custom-cstm {
+display: flex;
+flex-wrap: wrap;
+margin-top: 15px;
+}
+
+.checkbox-custom-cstm .form-check.form-check-inline {
+width: 25%;
+margin: 0;
+margin-bottom: 10px;
+}
+
+.checkbox-custom-cstm .form-check.form-check-inline label {
+font-size: 13px;
+color: #333;
+}
+
+.card .card-body .panel-heading{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dataTables_length,.dataTables_filter{
+  margin-bottom: 10px;
+}
+.dataTables_length label{
+  display: flex;
+  align-items: center;
+  width: fit-content;
+}
+.dataTables_filter{
+  display: flex;
+  justify-content: flex-end;
+}
+.dataTables_filter label{
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  justify-content: end;
+
+}
+.dataTables_wrapper.dt-bootstrap4 .dataTables_filter input{
+  margin: 0 0 0 10px ;
+}
+.dataTables_info,.dataTables_paginate{
+  margin-top: 10px;
+}
+
+.ui-datepicker-header.ui-widget-header.ui-helper-clearfix.ui-corner-all {
+background: #fff;
+border: none;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+border: none;
+background: transparent;
+font-weight: normal;
+color: #404040;
+text-align: center;
+font-size: 15px;
+}
+.ui-datepicker tbody,.ui-datepicker td,.ui-datepicker tfoot,.ui-datepicker th,.ui-datepicker thead,.ui-datepicker tr {
+  border-bottom: 1px solid;
+  border-color: black;
+  /* padding: 10px; */
+}
+.ui-datepicker thead{
+  border-top: 1px solid;
+  border-color: black;
+}
+.ui-datepicker table{
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-color: black;
+}
+.ui-datepicker td {
+  border: 0;
+  padding: 1px;
+  border-bottom: 1px solid;
+  border-color: black;
+  /* padding: 10px; */
+}
+.ui-datepicker select {
+  -webkit-appearance: auto;
+  -moz-appearance: none;
+}
+select.ui-datepicker-year,select.ui-datepicker-month {
+border: none;
+border-bottom: 1px solid #eee;
+margin: 0 5px;
+}
+.ui-datepicker .ui-datepicker-title select {
+font-size: 1em;
+margin: 4px 4px;
+}
+
+
+
+.ui-datepicker .ui-datepicker-prev span, .ui-datepicker .ui-datepicker-next span {
+display: block;
+position: absolute;
+left: 50%;
+margin-left: -8px;
+top: 50%;
+margin-top: -8px;
+rotate: 180deg;
+}
+
+.ui-datepicker .ui-datepicker-next span {rotate: 360deg;}
+
+.ui-widget-header .ui-icon {
+background-image: url(../assets/images/arrow.svg);
+background-position: left;
+background-repeat: no-repeat;
+background-size: 20px;
+}
+
+.ui-datepicker-prev-hover{background: transparent;border: none !important; padding: 0 !important;}
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus, .ui-button:hover, .ui-button:focus {
+border: none;
+background: transparent;
+font-weight: normal;
+color: #2b2b2b;
+padding: 0 !important;
+}
+
+div#ui-datepicker-div {
+width: 270px;
+padding: 20px 15px;
+border: 1px solid #D7D7D7;
+box-shadow: 1px 1px 4px 2px rgba(0, 0, 0, 0.1);
+border-radius: 10px;
+z-index:9999 !important
+}
+.ui-datepicker-today a.ui-state-highlight {
+background: #f6f6f6;
+border: 1px solid #c5c5c5;
+color: #454545;
+}
+.part_release_raw {
+background-color: #ffdcdc;
+}
+.part_release_raw td {
+color: #d30000;
+}
+.loan_fee_div{
+color: #2323ed;
+font-weight: bold;
+}
+.is_advance_interest_raw {
+background-color: rgb(214 251 214);
+}
+.is_advance_interest_raw td {
+color: #004600;
+}
