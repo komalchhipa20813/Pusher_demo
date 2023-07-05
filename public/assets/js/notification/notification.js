@@ -98,10 +98,10 @@ $(document).ready(function() {
                 processData: false,
                 success: function(data) {
                     $("#notification_modal").modal("hide");
-                    // toaster_message(data.message, data.icon);
+                    toaster_message(data.message, data.icon);
                 },
                 error: function(request) {
-                    // toaster_message('Something Went Wrong! Please Try Again.', 'error');
+                    toaster_message('Something Went Wrong! Please Try Again.', 'error');
                 },
             });
         }

@@ -52,10 +52,11 @@
             <div class="card-body">
                 <h6 class="card-title">Notification</h6>
                 <div class="heading-elements text-end" style="margin-bottom: 12px;">
+                @if($auth_id == 1)
                     <a class="btn btn-primary add_notification" data-id="{{ encryptid('0') }}">Add <i class="fa fa-plus"
                             aria-hidden="true"></i></a>
-                    <a class="btn btn-danger delete_all" id="delete_selected">Delete <i class="fa fa-trash position-left" aria-hidden="true"></i></a>
-              
+                    <a class="btn btn-danger delete_all" id="delete_selected">Delete<i class="fa fa-trash position-left" aria-hidden="true"></i></a>
+              @endif
                 </div>
                 <div class="table-responsive">
                     <table id="notification_tbl" class="table" style="width: 98% !important;">

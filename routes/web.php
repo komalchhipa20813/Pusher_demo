@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
-use App\Http\Controllers\{ EmployeeController,NotificationController};
+use App\Http\Controllers\{ DashboardController,NotificationController};
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,9 +22,11 @@ require __DIR__ . '/auth.php';
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/', function () {
-        return view('dashboard');
-    })->middleware(['auth'])->name('dashboard');
+    // Route::get('/', function () {
+    //     return view('dashboard');
+    // })->middleware(['auth'])->name('dashboard');
+
+    Route::get('/', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->middleware(['auth']);
@@ -34,7 +36,6 @@ Route::group(['middleware' => 'auth'], function () {
     })->middleware(['auth']);
 
     Route::resources([
-        'employee' => EmployeeController::class,
         'notification'=>NotificationController::class,
         
     ]);

@@ -99,13 +99,23 @@
     // Enable pusher logging - don't include this in production
         // Pusher.logToConsole = true;
 
-            var pusher = new Pusher('439bf8694fcf0159d431', {
+        var pusher = new Pusher('439bf8694fcf0159d431', {
             cluster: 'ap2',
         });
 
         var channel = pusher.subscribe('my-channel');
-        channel.bind('my-event', function(data) {
-        alert(JSON.stringify(data));
+        channel.bind('user-notification', function(data) {
+            $('.pusher-itme').html(data.text);
+            if(data.text != '')
+            {
+                console.log(JSON.stringify(data));
+            }
+            else
+            {
+                console.log('null');
+            }
+           
+            // alert(JSON.stringify(data));
         });
 </script>
     @stack('custom-scripts')

@@ -19,14 +19,15 @@
                     <span class="link-title">Dashboard</span>
                 </a>
             </li>
-
+            @if(Auth::user()->id == 1)
             <li class="nav-item nav-category">Module</li>
                 <li class="nav-item {{ active_class(['notification']) }} ">
                     <a href="{{ route('notification.index') }}" class="nav-link">
                         <i class="link-icon" data-feather="info"></i>
                         <span class="link-title">Notification</span>
                     </a>
-                </li>            
+                </li> 
+                @endif           
         </ul>
     </div>
 </nav>

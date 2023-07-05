@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use Pusher\Pusher;
-// use App\Events\UserNotificationEvent;
+use App\Events\UserNotificationEvent;
+use Illuminate\Support\Facades\Auth;
 
 class NotificationController extends Controller
 {
@@ -16,7 +17,9 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        return view('pages.notification.index');
+        // dd($text=Auth::user()->id);
+        $auth_id=Auth::user()->id;
+        return view('pages.notification.index',compact('auth_id'));
     }
 
       /* Listing Of Country */
@@ -44,6 +47,8 @@ class NotificationController extends Controller
         }
         return response(['data'=>$records]);
     }
+
+    
 
     /**
      * Show the form for creating a new resource.
@@ -78,24 +83,9 @@ class NotificationController extends Controller
 
 		if ($result) {
 
-            //     $text='hwwlo';
-            // event(new UserNotificationEvent($text));
+            $text=$result->id;
+            event(new UserNotificationEvent($text));
 
-            $option=array(
-                'cluster' => 'ap2',
-                'useTLS' => true
-
-            );
-
-            $pusher=new Pusher(
-                env('PUSHER_APP_KEY'),
-                env('PUSHER_APP_SECRET'),
-                env('PUSHER_APP_ID'),
-                $option
-            );
-
-            $data=['form' =>($result->id)];
-            $pusher->trigger('my-channel','my-event',$data);
 			$response = [
 				'status' => true,
 				'message' => 'Notification ' . (decryptid($request->notification_id) == '0' ? 'Added' : 'Updated') . ' Successfully',

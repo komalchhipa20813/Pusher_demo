@@ -18,11 +18,21 @@ class UserSeeder extends Seeder
     {
         User::insert([
             [
-                
+                'role'=>1,
                 'first_name' => 'henish',
                 'last_name' => 'patel',
                 'email' =>'admin@gmail.com',
                 'password' => Hash::make('Henish_12'),
+                'phone' => '9979732688',
+                'dob'=> Carbon::createFromDate(2014,07,22)->toDateTimeString(),
+                'gender' => 0,
+            ],
+            [
+                'role'=>2,
+                'first_name' => 'Komal',
+                'last_name' => 'Chhipa',
+                'email' =>'komal@gmail.com',
+                'password' => Hash::make('Komal_13'),
                 'phone' => '9979732688',
                 'dob'=> Carbon::createFromDate(2014,07,22)->toDateTimeString(),
                 'gender' => 0,

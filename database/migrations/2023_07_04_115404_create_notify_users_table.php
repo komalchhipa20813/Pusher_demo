@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateNotifiyUsersTable extends Migration
+class CreateNotifyUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateNotifiyUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('notifiy_users', function (Blueprint $table) {
+        Schema::create('notify_users', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('notif_id');
@@ -28,6 +28,6 @@ class CreateNotifiyUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notifiy_users');
+        Schema::dropIfExists('notify_users');
     }
 }
