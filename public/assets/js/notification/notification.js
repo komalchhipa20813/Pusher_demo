@@ -108,12 +108,12 @@ $(document).ready(function() {
     });
 
     /* Display Update Permission Modal */
-    $("body").on("click", ".country_edit", function(event) {
+    $("body").on("click", ".notitfication_edit", function(event) {
         var id = $(this).data("id");
-        $(".country_id").val(id);
+        $(".notification_id").val(id);
         event.preventDefault();
         $.ajax({
-            url: aurl + "/country/{" + id + "}",
+            url: aurl + "/notification/{" + id + "}",
             type: "GET",
             data: { id: id },
             dataType: "JSON",
@@ -121,24 +121,13 @@ $(document).ready(function() {
                 if (data.status) {
                     $("#notification_form").validate().resetForm();
                     $("#notification_form").trigger('reset');
-                    $('#title_notification_modal').text("Update Country");
+                    $('#title_notification_modal').text("Update Notification");
                     $('#notification_modal').modal('show');
-                    $('.submit_country').text("Update Country");
-                    $('.name').val(data.name);
-                    console.log(data.country_status);
+                    $('.submit_notification').text("Update Notification");
+                    $('.title').val(data.data.title);
+                    $('.message').text(data.data.message);
 
-                    checked = data.country_status == 1 ? "checked" : "";
-                    $(".editcountry").html(
-                        '<input class="switcherye" type="checkbox" ' +
-                        checked +
-                        ' id="editstatus" name="status"  >'
-                    );
-                    var elems = Array.prototype.slice.call(
-                        document.querySelectorAll(".switcherye")
-                    );
-                    elems.forEach(function(html) {
-                        var switchery = new Switchery(html);
-                    });
+                   
                 }else{
                     toaster_message(data.message,data.icon,data.redirect_url);
                 }

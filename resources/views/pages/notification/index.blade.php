@@ -32,7 +32,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="message" class="form-label">Message</label>
-                        <textarea class="form-control" id="message" name="message" rows="2" cols="4">
+                        <textarea class="form-control message" id="message" name="message" rows="2" cols="4">
                         </textarea>
                        
                     </div>

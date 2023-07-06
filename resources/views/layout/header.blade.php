@@ -17,34 +17,21 @@
 
 
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link  dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i data-feather="bell"></i>
+            <span class="bell-notify">
+            @if(headerData()['count'] != 0)
             <div class="indicator">
-                <div class="circle"></div>
+                <div class="circle">1</div>
             </div>
+            @endif
+        </span>
             </a>
-            <div class="dropdown-menu p-0" aria-labelledby="notificationDropdown">
-                <div class="px-3 py-2 d-flex align-items-center justify-content-between border-bottom">
-                    <p>@if($data['count']) {{$data['count']}} @endif  New Notifications </p>
-                    <a href="javascript:;" class="text-muted">Clear all</a>
-                </div>
-                <div class="p-1">
-                    @if($data['notifictions'])
-                    
-                    <a href="javascript:;" class="dropdown-item d-flex align-items-center py-2">
-                    <div class="wd-30 ht-30 d-flex align-items-center justify-content-center bg-primary rounded-circle me-3">
-                        <i class="icon-sm text-white" data-feather="gift"></i>
-                    </div>
-                    <div class="flex-grow-1 me-2">
-                        <p>New Order Recieved</p>
-                        <p class="tx-12 text-muted">30 min ago</p>
-                    </div>	
-                    </a>
-                    @endif
-                </div>
-                <div class="px-3 py-2 d-flex align-items-center justify-content-center border-top">
-                    <a href="javascript:;">View all</a>
-                </div>
+            <div class="dropdown-menu p-0 main-pusher-data" aria-labelledby="notificationDropdown">
+            @if(headerData()['notifictions'])
+                        {!! headerData()['notifictions']!!}
+             @endif
+            
             </div> 
         </li>
             <li class="nav-item dropdown">

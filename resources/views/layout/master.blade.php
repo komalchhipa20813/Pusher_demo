@@ -94,30 +94,7 @@
             },
         });
     </script>
-    <script>
-
-    // Enable pusher logging - don't include this in production
-        // Pusher.logToConsole = true;
-
-        var pusher = new Pusher('439bf8694fcf0159d431', {
-            cluster: 'ap2',
-        });
-
-        var channel = pusher.subscribe('my-channel');
-        channel.bind('user-notification', function(data) {
-            $('.pusher-itme').html(data.text);
-            if(data.text != '')
-            {
-                console.log(JSON.stringify(data));
-            }
-            else
-            {
-                console.log('null');
-            }
-           
-            // alert(JSON.stringify(data));
-        });
-</script>
+    <script src="{{ asset('assets/js/notification/pusher.js') }}"></script>
     @stack('custom-scripts')
 
 </body>

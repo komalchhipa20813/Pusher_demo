@@ -22,11 +22,11 @@ require __DIR__ . '/auth.php';
 
 Route::group(['middleware' => 'auth'], function () {
 
-    // Route::get('/', function () {
-    //     return view('dashboard');
-    // })->middleware(['auth'])->name('dashboard');
+    Route::get('/', function () {
+        return view('dashboard');
+    })->middleware(['auth'])->name('dashboard');
 
-    Route::get('/', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+    
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->middleware(['auth']);
@@ -45,9 +45,9 @@ Route::group(['middleware' => 'auth'], function () {
     /* employee */
     Route::group(['prefix' => 'notification'], function () {
         Route::post('/listing', [NotificationController::class, 'listing']);
-        // Route::post('/email-check', [EmployeeController::class, 'email_check']);
-        // Route::post('/delete-all', [EmployeeController::class, 'deleteAll']);
-        // Route::post('/reset-password', [EmployeeController::class, 'reset_password']);
+        Route::post('/pusher-notification', [NotificationController::class, 'notificationData']);
+        Route::post('/read-notification', [NotificationController::class, 'readNotification']);
+        Route::post('/delete-all', [NotificationController::class, 'deleteAll']);
     });
 
     

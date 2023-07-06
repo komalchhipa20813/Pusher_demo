@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Notification;
+use App\Models\{Notification,NotifyUser};
 use Illuminate\Http\Request;
 use Pusher\Pusher;
 use App\Events\UserNotificationEvent;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class NotificationController extends Controller
 {
@@ -17,7 +18,12 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        // dd($text=Auth::user()->id);
+        // dd(headerData());
+        $notification_ids = NotifyUser::where('user_id',Auth::user()->id)->pluck('notif_id')->toArray();
+
+        $notifictions =Notification::latest()->where('status','!=',2)->whereNotIn('id',$notification_ids)->get();
+
+
         $auth_id=Auth::user()->id;
         return view('pages.notification.index',compact('auth_id'));
     }
@@ -32,7 +38,7 @@ class NotificationController extends Controller
 
             $button = '';
                 
-                $button .= '<button class="country_edit btn btn-sm btn-success m-1" data-id="' . encryptid($row['id']) . '" >
+                $button .= '<button class="notitfication_edit btn btn-sm btn-success m-1" data-id="' . encryptid($row['id']) . '" >
                 <i class="mdi mdi-square-edit-outline"></i>
                 </button>';
                 $button .= '<button class="delete btn btn-sm btn-danger m-1" data-id="' . encryptid($row['id']) . '">
@@ -47,6 +53,51 @@ class NotificationController extends Controller
         }
         return response(['data'=>$records]);
     }
+
+    public function notificationData(Request $request)
+    {
+        $response = [
+            'data'=> headerData(),
+            'status' => true,
+            'message' => 'Notification  Successfully',
+            'icon' => 'success',
+        ];
+        
+        return response($response);
+        
+
+    }
+
+    public function readNotification(Request $request)
+    {
+        if((int)$request->id == 0)
+        {
+            $notification_ids = NotifyUser::where('user_id',Auth::user()->id)->pluck('notif_id')->toArray();
+
+            $notifictions =Notification::latest()->where('status','!=',2)->whereNotIn('id',$notification_ids)->get();
+    
+            foreach ($notifictions as $notifiction) {
+                $data[] = ['user_id' => Auth::user()->id, 'notif_id' => $notifiction->id];
+            }
+            
+        }
+        else{
+            $data[] = ['user_id' => Auth::user()->id, 'notif_id' => (int)$request->id];
+        }
+       
+        NotifyUser::insert($data);
+
+        $response = [
+            'data'=> headerData(),
+            'status' => true,
+            'message' => 'Notification read Successfully',
+            'icon' => 'success',
+        ];
+        
+        return response($response);
+
+    }
+
 
     
 
@@ -74,15 +125,18 @@ class NotificationController extends Controller
                 'message' => 'required',
 			]
 		);
+
 		$result = Notification::updateOrCreate([
 			'id' => decryptid($request->notification_id),
 		], [
 			'title' => strtoupper($request->title),
 			'message' => $request->message,
+            'date'=> Carbon::createFromFormat('Y-m-d H:i:s', date('Y-m-d H:i:s'))
+            ->format('Y-m-d H:i:s')
 		]);
 
 		if ($result) {
-
+            NotifyUser::where('notif_id',decryptid($request->notification_id))->delete();
             $text=$result->id;
             event(new UserNotificationEvent($text));
 
@@ -109,9 +163,22 @@ class NotificationController extends Controller
      * @param  \App\Models\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function show(Notification $notification)
+    public function show($id)
     {
-        //
+        try{
+            $notification = Notification::where('id', decryptid($id))->first();
+            $response = [
+                'data' => $notification,
+                'status' => true,
+            ];
+        }catch (\Throwable $e) {
+            $response = [
+                'status' => false,
+                'message' => 'Something Went Wrong! Please Try Again.',
+                'icon' => 'error',
+            ];
+        }
+        return response($response);
     }
 
     /**
@@ -143,8 +210,62 @@ class NotificationController extends Controller
      * @param  \App\Models\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Notification $notification)
+    public function destroy($id)
     {
-        //
+        try {
+            $update['status']=2;
+            $result= Notification::where('id',decryptid($id))->update($update);
+            if($result)
+            {
+                NotifyUser::where('notif_id',decryptid($id))->delete();
+                $response = [
+                    'status' => true,
+                    'message' => "Notification Data Deleted Successfully",
+                    'icon' => 'success',
+                ];
+            }
+            else{
+                $response = [
+                    'status' => false,
+                    'message' => "Something Went Wrong! Please Try Again.",
+                    'icon' => 'error',
+                ];
+            }
+            
+        }catch (\Throwable $e) {
+            $response = [
+                'status' => false,
+                'message' => "Something Went Wrong! Please Try Again.",
+                'icon' => 'error',
+            ];
+        }
+        return response($response);
     }
+
+    /* Delete selected Branch */
+	public function deleteAll(Request $request) {
+		$update['status'] = 2;
+		$ids=[];
+		$data_ids = $request->ids;
+		foreach ($data_ids as $key => $value) {
+			$ids[]=decryptid($value);
+		}
+		$users = Notification::where('status','!=',2)->pluck('id')->toArray();
+		$result = Notification::whereIn('id',array_intersect($ids, $users))->update($update);
+		if ($result) {
+            NotifyUser::whereIn('notif_id',array_intersect($ids, $users))->delete();
+			$response = [
+				'status' => true,
+				'message' => 'Notification Deleted Successfully',
+				'icon' => 'success',
+			];
+		} else {
+			$response = [
+				'status' => false,
+				'message' => "error in deleting",
+				'icon' => 'error',
+			];
+		}
+		return response($response);
+	}
 }
