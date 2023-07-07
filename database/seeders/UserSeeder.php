@@ -37,6 +37,16 @@ class UserSeeder extends Seeder
                 'dob'=> Carbon::createFromDate(2014,07,22)->toDateTimeString(),
                 'gender' => 0,
             ],
+            [
+                'role'=>2,
+                'first_name' => 'Alita',
+                'last_name' => 'Chhipa',
+                'email' =>'alita@gmail.com',
+                'password' => Hash::make('Alita_13'),
+                'phone' => '9979732688',
+                'dob'=> Carbon::createFromDate(2014,07,22)->toDateTimeString(),
+                'gender' => 0,
+            ],
         ]);
     }
 }
