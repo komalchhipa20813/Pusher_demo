@@ -15,7 +15,7 @@
         <ul class="navbar-nav">
 
 
-
+        @if(Auth::user()->id != 1)
         <li class="nav-item dropdown">
             <a class="nav-link  dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i data-feather="bell"></i>
@@ -34,6 +34,7 @@
             
             </div> 
         </li>
+        @endif
             <li class="nav-item dropdown">
             <div class="pusher-itme"></div>
                 <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"

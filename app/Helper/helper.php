@@ -97,7 +97,7 @@ function active_class($path, $active = 'active') {
                   <i class="icon-sm text-white" data-feather="book-open"></i>
               </div>
               <div class="flex-grow-1 me-2">
-                  <p>'.$notification->title.' <span style="margin-left: 110px;" onclick="notificationClear('.$notification->id.')">&times; </span></p>
+                  <p><span style="display:inline; width:100px;">'.$notification->title.'</span> <span style="margin-left: 110px;" onclick="notificationClear('.$notification->id.')">&times; </span></p>
                   <p  class="tx-12 text-muted">'.$notification->message.'</p>
                   <p class="tx-12 text-muted">'.timecalaculate($notification->date) .'</p>
               </div>	
